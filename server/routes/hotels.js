@@ -39,34 +39,21 @@ router.delete("/:id", async (req, res) => {
   }
 });
 //GET
-router.put("/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const updataHotels = await Hotel.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
-    res.status(200).json(updataHotels);
+    const hotel = await Hotel.findById(req.params.id);
+    res.status(200).json(hotel);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 //GET ALL
-router.put("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const updataHotels = await Hotel.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
-    res.status(200).json(updataHotels);
+    const hotels = await Hotel.find();
+    res.status(200).json(hotels);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
 export default router;
