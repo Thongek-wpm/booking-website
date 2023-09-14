@@ -28,11 +28,23 @@ mongoose.connection.on("connected", () => {
 });
 
 //middlewares
+
 app.use(Express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/user", usersRoute);
 app.use("/api/hotel", hotelRoute);
 app.use("/api/rooms", roomsRoute);
+
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "Something went wrong";
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  });
+});
 
 app.listen(8800, () => {
   connect();
