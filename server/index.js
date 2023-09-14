@@ -3,7 +3,7 @@ import Express from "express";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
 import usersRoute from "./routes/users.js";
-import hotelsRoute from "./routes/hotels.js";
+import hotelRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 
 const app = Express();
@@ -27,14 +27,11 @@ mongoose.connection.on("connected", () => {
   console.log("mongoDB Connected!");
 });
 
-app.get("/", (req, res) => {
-  res.send("Hey, First requset!");
-});
-
 //middlewares
+app.use(Express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/user", usersRoute);
-app.use("/api/holets", hotelsRoute);
+app.use("/api/hotel", hotelRoute);
 app.use("/api/rooms", roomsRoute);
 
 app.listen(8800, () => {
