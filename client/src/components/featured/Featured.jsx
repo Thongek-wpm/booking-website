@@ -1,11 +1,8 @@
-
 import useFetch from "../../hooks/useFetech";
 import "./featured.css";
 
 const Featured = () => {
-  const { data, loading, error } = useFetch(
-    "/hotel/countByCity?cities=Osaka,Wrexham,Peschiera del Garda"
-  );
+  const { data, loading } = useFetch("hotel/countbycity?cities=Osaka,Wrexham,Peschiera del Garda");
 
   console.log(data);
   return (
