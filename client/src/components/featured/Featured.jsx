@@ -2,7 +2,7 @@ import useFetch from "../../hooks/useFetech";
 import "./featured.css";
 
 const Featured = () => {
-  const { data, loading, error } = useFetch;
+  const { data, loading, error } = useFetch("");
   return (
     <div className="featured">
       <div className="featuredItem">
