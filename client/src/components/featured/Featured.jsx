@@ -1,14 +1,16 @@
-import useFetch from "../../hooks/useFetech";
+import useFetch from "../../hooks/useFetech.js";
 import "./featured.css";
 
 const Featured = () => {
-  const { data, loading } = useFetch("hotel/countbycity?cities=Osaka,Wrexham,Peschiera del Garda");
-
+  const { data, loading } = useFetch(
+    "/countByCity?cities=Osaka,Wrexham,Peschiera del Garda"
+  );
   console.log(data);
+
   return (
     <div className="featured">
       {loading ? (
-        "Loading plese wait"
+        "Loading please wait"
       ) : (
         <>
           <div className="featuredItem">
